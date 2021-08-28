@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct TabItem: Identifiable {
-    let id = UUID().uuidString
+public struct TabItem: Identifiable {
+    public let id = UUID().uuidString
     let title: String
 }
 
-struct TapToCenterTabBar: View {
+public struct TapToCenterTabBar: View {
     var tabWidth: CGFloat = 120
     @State var xOffset: CGFloat = 0
     @State var currrentXOffset: CGFloat = 0
@@ -25,7 +25,7 @@ struct TapToCenterTabBar: View {
     var selectedColor: Color = Color.primary
     var unselectedColor: Color = Color.gray
     
-    var body: some View {
+    public var body: some View {
         VStack(spacing: 0) {
             GeometryReader { reader in
                 HStack(spacing: 0) {
