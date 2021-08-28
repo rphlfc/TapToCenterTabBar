@@ -10,6 +10,10 @@ import SwiftUI
 public struct TabItem: Identifiable {
     public let id = UUID().uuidString
     let title: String
+    
+    public init(title: String) {
+        self.title = title
+    }
 }
 
 public struct TapToCenterTabBar: View {
@@ -24,6 +28,13 @@ public struct TapToCenterTabBar: View {
     
     var selectedColor: Color = Color.primary
     var unselectedColor: Color = Color.gray
+    
+    public init(selectedIndex: Binding<Int>, items: [TabItem], selectedColor: Color = Color.primary, unselectedColor: Color = Color.gray) {
+        self._selectedIndex = selectedIndex
+        self.tabItems = items
+        self.selectedColor = selectedColor
+        self.unselectedColor = unselectedColor
+    }
     
     public var body: some View {
         VStack(spacing: 0) {
@@ -140,7 +151,7 @@ struct PreviewContainer: View {
     
     var body: some View {
         VStack {
-            TapToCenterTabBar(selectedIndex: $selectedIndex, tabItems: items)
+            TapToCenterTabBar(selectedIndex: $selectedIndex, items: items)
             
             Spacer()
         }
